@@ -7,8 +7,7 @@
           :product="product"
           :key="product.id"
           @addToCart="addProductToCart"
-        >
-        </product-item>
+        ></product-item>
       </b-card-group>
     </paginate>
 
@@ -19,8 +18,7 @@
         li: 'page-item',
         'li > a': 'page-link',
       }"
-    >
-    </paginate-links>
+    ></paginate-links>
   </div>
   <b-alert v-else show variant="info">No hay productos que mostrar</b-alert>
 </template>
@@ -50,7 +48,10 @@ export default {
 
   methods: {
     ...mapActions("products", ["fetchProducts"]),
-    addProductToCart(product) {},
+    ...mapMutations("cart", ["addProduct"]),
+    addProductToCart(product) {
+      this.addProduct(product);
+    },
   },
 };
 </script>
