@@ -1,7 +1,7 @@
 <template>
   <div v-if="products.length">
     <paginate name="products" :list="products" :per="perPage">
-      <b-card-group columns>
+      <b-card-group deck>
         <product-item
           v-for="product in paginated('products')"
           :product="product"
@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       paginate: ["products"],
-      perPage: 3,
+      perPage: 2,
     };
   },
   computed: {

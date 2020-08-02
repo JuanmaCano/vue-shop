@@ -1,8 +1,8 @@
 <template>
   <div v-if="cart.length">
     <b-table striped hover :items="cart" :fields="fields">
-      <template slot="actions" slot-scope="cell">
-        <b-button size="sm" variant="danger" @click.stop="removeProductFromCart(cell.item)">Eliminar</b-button>
+      <template v-slot:cell(actions)="row">
+        <b-button variant="danger" size="sm" @click.stop="removeProductFromCart(row.item)">Delete</b-button>
       </template>
     </b-table>
     <b-alert show variant="success" class="text-center">Coste total: {{ totalCost.toFixed(2) }}€</b-alert>
